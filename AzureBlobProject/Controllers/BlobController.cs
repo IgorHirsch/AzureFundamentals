@@ -1,3 +1,4 @@
+using AzureBlobProject.Models;
 using AzureBlobProject.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +26,7 @@ public class BlobController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddFile(string containerName, IFormFile file)
+    public async Task<IActionResult> AddFile(string containerName, BlobModel blob, IFormFile file)
     {
         if (file == null || file.Length < 1) return View();
 
@@ -33,7 +34,7 @@ public class BlobController : Controller
         //new name - xps_img2_GUIDHERE.png
         var fileName = Path.GetFileNameWithoutExtension(file.FileName) + "_" + Guid.NewGuid() + Path.GetExtension(file.FileName);
 
-        var result = await _blobService.UploadBlob(fileName, file, containerName);
+        var result = await _blobService.UploadBlob(fileName, file, containerName, blob);
 
         if (result)
             return RedirectToAction("Index", "Container");
