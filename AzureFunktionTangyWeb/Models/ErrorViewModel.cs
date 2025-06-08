@@ -1,4 +1,4 @@
-namespace AzureFunktionTangyWeb.Models
+namespace AzureFunctionTangyWeb.Models
 {
     public class ErrorViewModel
     {

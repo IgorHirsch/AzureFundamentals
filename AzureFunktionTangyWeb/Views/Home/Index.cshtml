@@ -1,8 +1,36 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using AzureFunctionTangyWeb.Models
+@model SalesRequest
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5 d-flex justify-content-center">
+    <div class="card shadow-lg p-4" style="max-width: 600px; width: 100%;">
+        <h2 class="text-center text-primary mb-4">Job Application</h2>
+        <p class="text-center text-muted">Enter your details to apply today!</p>
+
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label fw-bold">Full Name</label>
+                <input asp-for="Name" class="form-control" placeholder="John Doe" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label fw-bold">Email Address</label>
+                <input asp-for="Email" class="form-control" placeholder="you@example.com" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Phone" class="form-label fw-bold">Phone Number</label>
+                <input asp-for="Phone" class="form-control" placeholder="+1 123 456 7890" />
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label fw-bold">Upload Resume</label>
+                <input type="file" class="form-control" name="file" />
+                <div class="form-text">PDF or Word format preferred.</div>
+            </div>
+
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary btn-lg">Apply Now</button>
+            </div>
+        </form>
+    </div>
 </div>
